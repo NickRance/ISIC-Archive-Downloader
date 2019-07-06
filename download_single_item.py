@@ -94,7 +94,7 @@ class BasicElementDownloader:
         # To do so, we can open the image file using PIL.Image and try to resize it to the size
         # the file declares it has.
         # If the image wasn't fully downloaded and was truncated - an error will be raised.
-        img : Image.Image = Image.open(image_path)
+        img = Image.open(image_path)
         img.resize(img.size)
 
 

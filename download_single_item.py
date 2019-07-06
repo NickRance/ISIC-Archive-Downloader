@@ -51,7 +51,7 @@ class BasicElementDownloader:
         return False
 
     @staticmethod
-    def fetch_description(url: str) -> list:
+    def fetch_description(url):
         """
 
         :param id: Id of the image whose description will be downloaded
@@ -84,7 +84,7 @@ class BasicElementDownloader:
             json.dump(desc, descFile, indent=2)
 
     @classmethod
-    def download_description(cls, url: str, dir: str) -> list:
+    def download_description(cls, url, dir) -> list:
         desc = cls.fetch_description(url)
         cls.save_description(desc, dir)
 
@@ -99,8 +99,8 @@ class BasicElementDownloader:
 
 
 class LesionImageDownloader():
-    url_prefix: str = 'https://isic-archive.com/api/v1/image/'
-    url_suffix: str = '/download?contentDisposition=inline'
+    url_prefix = 'https://isic-archive.com/api/v1/image/'
+    url_suffix = '/download?contentDisposition=inline'
 
     @classmethod
     def download_image(cls, desc, dir):
@@ -114,7 +114,7 @@ class LesionImageDownloader():
         BasicElementDownloader.download_img(img_url=img_url, img_name=desc['name'], dir=dir)
 
     @classmethod
-    def fetch_img_description(cls, id: str) -> list:
+    def fetch_img_description(cls, id) -> list:
         """
 
         :param id: Id of the image whose description will be downloaded
@@ -124,7 +124,7 @@ class LesionImageDownloader():
         return BasicElementDownloader.fetch_description(url)
 
     @classmethod
-    def save_img_description(cls, desc, dir):
+    def save_img_description(cls, desc, dir) -> list:
         BasicElementDownloader.save_description(desc, dir)
 
     @classmethod
@@ -151,10 +151,10 @@ class LesionImageDownloader():
 
 
 class SegmentationDownloader:
-    url_prefix: str = 'https://isic-archive.com/api/v1/segmentation'
-    id_url_prefix: str = url_prefix + '?limit=0&imageId='
-    img_url_prefix: str = url_prefix + '/'
-    img_url_suffix: str = '/mask?contentDisposition=inline'
+    url_prefix = 'https://isic-archive.com/api/v1/segmentation'
+    id_url_prefix = url_prefix + '?limit=0&imageId='
+    img_url_prefix = url_prefix + '/'
+    img_url_suffix = '/mask?contentDisposition=inline'
 
     @classmethod
     def download_image(cls, lesion_desc, dir, skill_pref):
